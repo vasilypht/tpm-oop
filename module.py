@@ -63,21 +63,13 @@ class DList:
 
     def __iter__(self):
         self.__cur_item = self.head
-        self.__cur_index = 0
         return self
 
     def __next__(self):
-        if self.size == 0:
-            raise StopIteration
-
-        if self.__cur_index == 0:
-            self.__cur_index += 1
-            return self.__cur_item.data
-
-        elif self.__cur_index < self.size:
-            self.__cur_index += 1
+        if self.__cur_item is not None:
+            data = self.__cur_item.data
             self.__cur_item = self.__cur_item.next
-            return self.__cur_item.data
+            return data
 
         else:
             raise StopIteration

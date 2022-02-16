@@ -1,0 +1,20 @@
+Container contents 6 elements.
+This is a game movie.
+	Title: Варкрафт
+	Director: Дункан Джонс
+This is a cartoon.
+	Title: Уоллес и Громит: Неправильные штаны
+	Way to create: plasticine
+This is a cartoon.
+	Title: История игрушек
+	Way to create: drawn
+This is a game movie.
+	Title: Пиксели
+	Director: Крис Коламбус
+This is a game movie.
+	Title: Мортал Комбат
+	Director: Саймон Маккуойд
+This is a cartoon.
+	Title: Коралина в Стране Кошмаров
+	Way to create: puppet
+Container contents 0 elements.

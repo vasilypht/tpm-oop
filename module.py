@@ -96,6 +96,9 @@ class Film:
             case 2:
                 film = Cartoon()
 
+            case 3:
+                film = Documentary()
+
             case _:
                 stream.close()
                 raise Exception("Error type!")
@@ -160,3 +163,23 @@ class Cartoon(Film):
         return f"This is a cartoon.\n"\
                f"\tTitle: {self.title}\n"\
                f"\tWay to create: {self.way_to_create.name}\n"
+
+
+class Documentary(Film):
+    def __init__(self):
+        super().__init__()
+        self.year_of_issue = 0
+
+    def read_from(self, stream):
+        self.title = stream.readline().rstrip("\n")
+        self.year_of_issue = int(stream.readline())
+
+    def write_to(self, stream):
+        stream.write(f"This is a documentary.\n"
+                     f"\tTitle: {self.title}\n"
+                     f"\tYear of issue: {self.year_of_issue}\n")
+
+    def __str__(self):
+        return f"This is a documentary.\n" \
+               f"\tTitle: {self.title}\n" \
+               f"\tYear of issue: {self.year_of_issue}\n"

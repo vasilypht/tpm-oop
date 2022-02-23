@@ -1,10 +1,13 @@
-Container contents 6 elements.
+Container contents 9 elements.
 This is a game movie.
 	Title: Варкрафт
 	Director: Дункан Джонс
 This is a cartoon.
 	Title: Уоллес и Громит: Неправильные штаны
 	Way to create: plasticine
+This is a documentary.
+	Title: Под лёд
+	Year of issue: 2019
 This is a cartoon.
 	Title: История игрушек
 	Way to create: drawn
@@ -14,7 +17,13 @@ This is a game movie.
 This is a game movie.
 	Title: Мортал Комбат
 	Director: Саймон Маккуойд
+This is a documentary.
+	Title: Чудаки
+	Year of issue: 2002
 This is a cartoon.
 	Title: Коралина в Стране Кошмаров
+	Way to create: puppet
+This is a cartoon.
+	Title: Ральф против интернетов
 	Way to create: puppet
 Container contents 0 elements.

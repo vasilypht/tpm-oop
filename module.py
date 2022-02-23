@@ -58,6 +58,12 @@ class DList:
         for item in self:
             item.write_to(stream)
 
+    def write_game_film_to(self, stream):
+        stream.write("Only game films.\n")
+
+        for item in self:
+            item.write_game_film_to(stream)
+
     def __len__(self) -> int:
         return self.size
 
@@ -103,6 +109,9 @@ class Film:
         film.read_from(stream)
         return film
 
+    def write_game_film_to(self, stream):
+        pass
+
 
 class GameFilm(Film):
     def __init__(self):
@@ -117,6 +126,9 @@ class GameFilm(Film):
         stream.write(f"This is a game movie.\n"
                      f"\tTitle: {self.title}\n"
                      f"\tDirector: {self.director}\n")
+
+    def write_game_film_to(self, stream):
+        self.write_to(stream)
 
     def __str__(self):
         return f"This is a game movie.\n"\

@@ -2,19 +2,25 @@ Container contents 6 elements.
 This is a game movie.
 	Title: Варкрафт
 	Director: Дункан Джонс
+	Country: США
 This is a cartoon.
 	Title: Уоллес и Громит: Неправильные штаны
 	Way to create: plasticine
+	Country: Великобритания
 This is a cartoon.
 	Title: История игрушек
 	Way to create: drawn
+	Country: США
 This is a game movie.
 	Title: Пиксели
 	Director: Крис Коламбус
+	Country: США
 This is a game movie.
 	Title: Мортал Комбат
 	Director: Саймон Маккуойд
+	Country: США Австралия
 This is a cartoon.
 	Title: Коралина в Стране Кошмаров
 	Way to create: puppet
+	Country: США
 Container contents 0 elements.

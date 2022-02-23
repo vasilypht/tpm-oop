@@ -1,4 +1,5 @@
 from enum import Enum
+import re
 
 
 class Node:
@@ -57,6 +58,7 @@ class DList:
 
         for item in self:
             item.write_to(stream)
+            stream.write(f"\tNum of vowels in title: {item.num_vowels_in_title()}\n")
 
     def __len__(self) -> int:
         return self.size
@@ -102,6 +104,9 @@ class Film:
 
         film.read_from(stream)
         return film
+
+    def num_vowels_in_title(self):
+        return len(re.findall(r"[ауоыиэяюёеaeiouy]", self.title, re.IGNORECASE))
 
 
 class GameFilm(Film):

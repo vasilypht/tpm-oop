@@ -60,6 +60,15 @@ class DList:
             item.write_to(stream)
             stream.write(f"\tNum of vowels in title: {item.num_vowels_in_title()}\n")
 
+    def sort(self):
+        for i in range(self.size):
+            curr_node = self.head
+            while curr_node.next:
+                next_node = curr_node.next
+                if curr_node.data.compare(next_node.data):
+                    curr_node.data, next_node.data = next_node.data, curr_node.data
+                curr_node = next_node
+
     def __len__(self) -> int:
         return self.size
 
@@ -107,6 +116,9 @@ class Film:
 
     def num_vowels_in_title(self):
         return len(re.findall(r"[ауоыиэяюёеaeiouy]", self.title, re.IGNORECASE))
+
+    def compare(self, other):
+        return self.num_vowels_in_title() < other.num_vowels_in_title()
 
 
 class GameFilm(Film):

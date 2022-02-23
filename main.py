@@ -20,6 +20,7 @@ if __name__ == "__main__":
 
     output_file = open(sys.argv[2], "w")
 
+    container.sort()
     container.write_to(output_file)
     container.clear()
 

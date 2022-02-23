@@ -1,26 +1,26 @@
 Container contents 6 elements.
-This is a game movie.
-	Title: Варкрафт
-	Director: Дункан Джонс
-	Num of vowels in title: 2
 This is a cartoon.
 	Title: Уоллес и Громит: Неправильные штаны
 	Way to create: plasticine
 	Num of vowels in title: 13
 This is a cartoon.
+	Title: Коралина в Стране Кошмаров
+	Way to create: puppet
+	Num of vowels in title: 9
+This is a cartoon.
 	Title: История игрушек
 	Way to create: drawn
 	Num of vowels in title: 7
+This is a game movie.
+	Title: Мортал Комбат
+	Director: Саймон Маккуойд
+	Num of vowels in title: 4
 This is a game movie.
 	Title: Пиксели
 	Director: Крис Коламбус
 	Num of vowels in title: 3
 This is a game movie.
-	Title: Мортал Комбат
-	Director: Саймон Маккуойд
-	Num of vowels in title: 4
-This is a cartoon.
-	Title: Коралина в Стране Кошмаров
-	Way to create: puppet
-	Num of vowels in title: 9
+	Title: Варкрафт
+	Director: Дункан Джонс
+	Num of vowels in title: 2
 Container contents 0 elements.

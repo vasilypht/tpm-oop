@@ -196,11 +196,13 @@ class Documentary(Film):
     def read_from(self, stream):
         self.title = stream.readline().rstrip("\n")
         self.year_of_issue = int(stream.readline())
+        super().read_from(stream)
 
     def write_to(self, stream):
         stream.write(f"This is a documentary.\n"
                      f"\tTitle: {self.title}\n"
                      f"\tYear of issue: {self.year_of_issue}\n")
+        super().write_to(stream)
 
     def __str__(self):
         return f"This is a documentary.\n" \

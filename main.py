@@ -22,6 +22,7 @@ if __name__ == "__main__":
 
     container.sort()
     container.write_to(output_file)
+    container.write_game_film_to(output_file)
     container.clear()
 
     print("Empty container.")

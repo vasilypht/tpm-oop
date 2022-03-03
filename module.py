@@ -89,12 +89,13 @@ class DList:
 class Film:
     def __init__(self):
         self.title = ""
+        self.country = ""
 
     def read_from(self, stream):
-        pass
+        self.country = stream.readline().rstrip("\n")
 
     def write_to(self, stream):
-        pass
+        stream.write(f"\tCountry: {self.country}\n")
 
     @staticmethod
     def create_from(stream, line):
@@ -132,11 +133,13 @@ class GameFilm(Film):
     def read_from(self, stream):
         self.title = stream.readline().rstrip("\n")
         self.director = stream.readline().rstrip("\n")
+        super().read_from(stream)
 
     def write_to(self, stream):
         stream.write(f"This is a game movie.\n"
                      f"\tTitle: {self.title}\n"
                      f"\tDirector: {self.director}\n")
+        super().write_to(stream)
 
     def __str__(self):
         return f"This is a game movie.\n"\
@@ -171,10 +174,13 @@ class Cartoon(Film):
                 stream.close()
                 raise Exception("Error type!")
 
+        super().read_from(stream)
+
     def write_to(self, stream):
         stream.write(f"This is a cartoon.\n"
                      f"\tTitle: {self.title}\n"
                      f"\tWay to create: {self.way_to_create.name}\n")
+        super().write_to(stream)
 
     def __str__(self):
         return f"This is a cartoon.\n"\

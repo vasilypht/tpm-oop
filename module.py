@@ -58,7 +58,6 @@ class DList:
 
         for item in self:
             item.write_to(stream)
-            stream.write(f"\tNum of vowels in title: {item.num_vowels_in_title()}\n")
 
     def sort(self):
         for i in range(self.size):
@@ -102,6 +101,7 @@ class Film:
 
     def write_to(self, stream):
         stream.write(f"\tCountry: {self.country}\n")
+        stream.write(f"\tNum of vowels in title: {self.num_vowels_in_title()}\n")
 
     @staticmethod
     def create_from(stream, line):

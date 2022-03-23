@@ -59,4 +59,3 @@ This is a game movie.
 	Director: Кеасоян
 	Country: Россия
 	Num of vowels in title: 9
-Container contents 0 elements.

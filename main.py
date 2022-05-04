@@ -9,7 +9,18 @@ if __name__ == "__main__":
               "Waited: command in_file out_file")
         sys.exit(1)
 
-    input_file = open(sys.argv[1], "r")
+    try:
+        input_file = open(sys.argv[1], "r")
+    except OSError:
+        print(f"File opening error ({sys.argv[1]})")
+        sys.exit(1)
+
+    try:
+        output_file = open(sys.argv[2], "w")
+    except Exception:
+        input_file.close()
+        print(f"File opening error ({sys.argv[2]})")
+        sys.exit(1)
 
     print("Start")
 
@@ -18,11 +29,9 @@ if __name__ == "__main__":
 
     print("Filled container.")
 
-    output_file = open(sys.argv[2], "w")
-
-    #container.sort()
+    container.sort()
     container.write_to(output_file)
-    #container.write_game_film_to(output_file)
+    container.write_game_film_to(output_file)
     container.clear()
 
     print("Empty container.")

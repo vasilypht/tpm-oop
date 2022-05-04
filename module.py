@@ -1,3 +1,4 @@
+import sys
 from enum import Enum
 import re
 
@@ -97,15 +98,30 @@ class Film:
         self.country = ""
 
     def read_from(self, stream):
-        self.country = stream.readline().rstrip("\n")
+        try:
+            self.country = stream.readline().rstrip("\n")
+        except Exception:
+            print("Country read error!")
+            stream.close()
+            sys.exit(1)
 
     def write_to(self, stream):
-        stream.write(f"\tCountry: {self.country}\n")
-        stream.write(f"\tNum of vowels in title: {self.num_vowels_in_title()}\n")
+        try:
+            stream.write(f"\tCountry: {self.country}\n")
+            stream.write(f"\tNum of vowels in title: {self.num_vowels_in_title()}\n")
+        except Exception:
+            print("Error writing data to file!")
+            stream.close()
+            sys.exit(1)
 
     @staticmethod
     def create_from(stream, line):
-        k = int(line)
+        try:
+            k = int(line)
+        except Exception:
+            print(f"Number conversion error. ({line})")
+            stream.close()
+            sys.exit(1)
 
         match k:
             case 1:
@@ -119,7 +135,8 @@ class Film:
 
             case _:
                 stream.close()
-                raise Exception("Error type!")
+                print(f"Error, invalid object id entered: {k}")
+                sys.exit(1)
 
         film.read_from(stream)
         return film
@@ -140,18 +157,33 @@ class GameFilm(Film):
         self.director = ""
 
     def read_from(self, stream):
-        self.title = stream.readline().rstrip("\n")
-        self.director = stream.readline().rstrip("\n")
-        super().read_from(stream)
+        try:
+            self.title = stream.readline().rstrip("\n")
+            self.director = stream.readline().rstrip("\n")
+            super().read_from(stream)
+        except Exception:
+            print("Game movie data read error.")
+            stream.close()
+            sys.exit(1)
 
     def write_to(self, stream):
-        stream.write(f"This is a game movie.\n"
-                     f"\tTitle: {self.title}\n"
-                     f"\tDirector: {self.director}\n")
-        super().write_to(stream)
+        try:
+            stream.write(f"This is a game movie.\n"
+                         f"\tTitle: {self.title}\n"
+                         f"\tDirector: {self.director}\n")
+            super().write_to(stream)
+        except Exception:
+            stream.close()
+            print("Error writing data to file!")
+            sys.exit(1)
 
     def write_game_film_to(self, stream):
-        self.write_to(stream)
+        try:
+            self.write_to(stream)
+        except Exception:
+            stream.close()
+            print("Error writing data to file!")
+            sys.exit(1)
 
     def __str__(self):
         return f"This is a game movie.\n"\
@@ -171,9 +203,19 @@ class Cartoon(Film):
         self.way_to_create = None
 
     def read_from(self, stream):
-        self.title = stream.readline().rstrip("\n")
+        try:
+            self.title = stream.readline().rstrip("\n")
+        except Exception:
+            stream.close()
+            print("Name reading error!")
+            sys.exit(1)
 
-        k = int(stream.readline())
+        try:
+            k = int(stream.readline())
+        except Exception:
+            print(f"Number conversion error.")
+            stream.close()
+            sys.exit(1)
 
         match k:
             case WayToCreate.drawn.value:
@@ -184,15 +226,26 @@ class Cartoon(Film):
                 self.way_to_create = WayToCreate.plasticine
             case _:
                 stream.close()
-                raise Exception("Error type!")
-
-        super().read_from(stream)
+                print(f"Error, invalid object id entered: {k}")
+                sys.exit(1)
+        try:
+            super().read_from(stream)
+        except Exception:
+            stream.close()
+            print("Cartoon data read error!")
+            sys.exit(1)
 
     def write_to(self, stream):
-        stream.write(f"This is a cartoon.\n"
-                     f"\tTitle: {self.title}\n"
-                     f"\tWay to create: {self.way_to_create.name}\n")
-        super().write_to(stream)
+        try:
+            stream.write(f"This is a cartoon.\n"
+                         f"\tTitle: {self.title}\n"
+                         f"\tWay to create: {self.way_to_create.name}\n")
+            super().write_to(stream)
+
+        except Exception:
+            stream.close()
+            print("Error writing data to file!")
+            sys.exit(1)
 
     def __str__(self):
         return f"This is a cartoon.\n"\
@@ -206,15 +259,25 @@ class Documentary(Film):
         self.year_of_issue = 0
 
     def read_from(self, stream):
-        self.title = stream.readline().rstrip("\n")
-        self.year_of_issue = int(stream.readline())
-        super().read_from(stream)
+        try:
+            self.title = stream.readline().rstrip("\n")
+            self.year_of_issue = int(stream.readline())
+            super().read_from(stream)
+        except Exception:
+            stream.close()
+            print("Documentary Read Error!")
+            sys.exit(1)
 
     def write_to(self, stream):
-        stream.write(f"This is a documentary.\n"
-                     f"\tTitle: {self.title}\n"
-                     f"\tYear of issue: {self.year_of_issue}\n")
-        super().write_to(stream)
+        try:
+            stream.write(f"This is a documentary.\n"
+                         f"\tTitle: {self.title}\n"
+                         f"\tYear of issue: {self.year_of_issue}\n")
+            super().write_to(stream)
+        except Exception:
+            stream.close()
+            print("Error writing documentary film data to file.")
+            sys.exit(1)
 
     def __str__(self):
         return f"This is a documentary.\n" \

@@ -29,6 +29,9 @@ if __name__ == "__main__":
 
     print("Filled container.")
 
+    container.compare_films()
+    print("Compare films done")
+
     container.sort()
     container.write_to(output_file)
     container.write_game_film_to(output_file)

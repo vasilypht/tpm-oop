@@ -75,6 +75,14 @@ class DList:
         for item in self:
             item.write_game_film_to(stream)
 
+    def compare_films(self):
+        film_pack_1 = [item for item in self]
+        film_pack_2 = film_pack_1.copy()
+
+        for film_1 in film_pack_1:
+            for film_2 in film_pack_2:
+                Film.check_films(film_1, film_2)
+
     def __len__(self) -> int:
         return self.size
 
@@ -140,6 +148,65 @@ class Film:
 
         film.read_from(stream)
         return film
+
+    @staticmethod
+    def check_films(film_1, film_2):
+        match film_1, film_2:
+            case GameFilm(), GameFilm():
+                print("Films from the same category")
+                print("Type - first film: GameFilm, second film: GameFilm")
+                print(f"Name - first film: {film_1.title}, second film: {film_2.title}")
+                print()
+
+            case GameFilm(), Cartoon():
+                print("Films from different categories")
+                print("Type - first film: GameFilm, second film: Cartoon")
+                print(f"Name - first film: {film_1.title}, second film: {film_2.title}")
+                print()
+
+            case GameFilm(), Documentary():
+                print("Films from different categories")
+                print("Type - first film: GameFilm, second film: Documentary")
+                print(f"Name - first film: {film_1.title}, second film: {film_2.title}")
+                print()
+
+
+            case Cartoon(), GameFilm():
+                print("Films from different categories")
+                print("Type - first film: Cartoon, second film: GameFilm")
+                print(f"Name - first film: {film_1.title}, second film: {film_2.title}")
+                print()
+
+            case Cartoon(), Cartoon():
+                print("Films from the same category")
+                print("Type - first film: Cartoon, second film: Cartoon")
+                print(f"Name - first film: {film_1.title}, second film: {film_2.title}")
+                print()
+
+            case Cartoon(), Documentary():
+                print("Films from different categories")
+                print("Type - first film: Cartoon, second film: Documentary")
+                print(f"Name - first film: {film_1.title}, second film: {film_2.title}")
+                print()
+
+
+            case Documentary(), GameFilm():
+                print("Films from different categories")
+                print("Type - first film: Documentary, second film: GameFilm")
+                print(f"Name - first film: {film_1.title}, second film: {film_2.title}")
+                print()
+
+            case Documentary(), Cartoon():
+                print("Films from different categories")
+                print("Type - first film: Documentary, second film: Cartoon")
+                print(f"Name - first film: {film_1.title}, second film: {film_2.title}")
+                print()
+
+            case Documentary(), Documentary():
+                print("Films from the same category")
+                print("Type - first film: Documentary, second film: Documentary")
+                print(f"Name - first film: {film_1.title}, second film: {film_2.title}")
+                print()
 
     def write_game_film_to(self, stream):
         pass
